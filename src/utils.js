@@ -26,3 +26,9 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+// Генератор уникальных чисел
+let lastUniqueNumber = 7
+export function getId() {               
+  return ++lastUniqueNumber
+}

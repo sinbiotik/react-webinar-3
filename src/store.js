@@ -1,3 +1,4 @@
+import { getId } from "./utils";
 /**
  * Хранилище состояния приложения
  */
@@ -43,8 +44,8 @@ class Store {
    */
   addItem() {
     this.setState({
-      ...this.state,
-      list: [...this.state.list, {code: this.state.list.length + 1, title: 'Новая запись'}]
+      ...this.state,    
+      list: [...this.state.list, {code: getId(), title: 'Новая запись', count: 0}]      
     })
   };
 
@@ -69,7 +70,8 @@ class Store {
       list: this.state.list.map(item => {
         if (item.code === code) {
           item.selected = !item.selected;
-        }
+          item.selected ? item.count++ : item.selected = false;
+        }          
         return item;
       })
     })

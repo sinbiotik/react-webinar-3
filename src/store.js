@@ -43,10 +43,21 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
+    let max = this.state.list[0].code
+    for (let i of this.state.list) {      
+      if(i.code > max) {
+        max = i.code        
+      }      
+    }   
+    
     this.setState({
-      ...this.state,    
-      list: [...this.state.list, {code: getId(), title: 'Новая запись', count: 0}]      
-    })
+      ...this.state,
+      list: [...this.state.list, {
+        code: getId(max),
+        title: 'Новая запись',
+        count: 0
+      }]      
+    })    
   };
 
   /**
@@ -71,7 +82,9 @@ class Store {
         if (item.code === code) {
           item.selected = !item.selected;
           item.selected ? item.count++ : item.selected = false;
-        }          
+        } else {
+          item.selected = false;
+        }         
         return item;
       })
     })

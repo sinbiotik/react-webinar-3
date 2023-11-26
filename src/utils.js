@@ -28,7 +28,12 @@ export function createElement(name, props = {}, ...children) {
 }
 
 // Генератор уникальных чисел
-let lastUniqueNumber = 7
-export function getId() {               
-  return ++lastUniqueNumber
+let lastUniqueNumber = 0
+export function getId(maxCode) {               
+  if(maxCode >= lastUniqueNumber) {
+    lastUniqueNumber = maxCode + 1;    
+    return lastUniqueNumber
+  } else {
+    return ++lastUniqueNumber
+  }
 }

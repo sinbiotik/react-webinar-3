@@ -5,6 +5,17 @@ body {
   font-family: sans-serif;
 }
 
+button {
+  min-width: 76px;
+  min-height: 21px;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
 .PageLayout {
   max-width: 1024px;
   min-height: 100vh;
@@ -12,4 +23,30 @@ body {
   background: #fff;
   box-sizing: border-box;
   box-shadow: 0 0 15px 5px #0000003b;
+}
+
+.text {
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.bold {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.price:after {
+  margin-left: 5px;
+  content: "\20BD";
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 20px 10px;
 }

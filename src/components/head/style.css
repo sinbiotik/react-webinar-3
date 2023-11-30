@@ -1,9 +1,22 @@
 .Head {
   height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #f5f5f5;
 }
 
 .Head h1 {
   margin: 0;
   padding: 20px 20px 10px;
+  font-family: Arial;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 37px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.Head .Head-btn {
+  margin-right: 10px;
 }

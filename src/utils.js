@@ -50,3 +50,19 @@ export const generateCode1 = (function (start = 0) {
 export function generateCode2() {
   return generateCode2.value ? ++generateCode2.value : generateCode2.value = 1;
 }
+
+export function sumGoodsFunc(arr) {
+  let sumGoods = 0;
+  arr.forEach(function(item){
+    sumGoods += item.count * item.price
+  })
+  return (sumGoods);
+}
+
+export function countGoodsFunc(arr) {
+  let countGoods = 0
+  arr.forEach(function(item){
+    countGoods += item.count
+  })
+  return (countGoods);
+}

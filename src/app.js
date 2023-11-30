@@ -1,8 +1,10 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
+import Modal from './components/modal';
+import { countGoodsFunc, sumGoodsFunc } from './utils';
 
 /**
  * Приложение
@@ -11,29 +13,62 @@ import PageLayout from "./components/page-layout";
  */
 function App({store}) {
 
+  const [modal, setModal] = useState(false)
+
   const list = store.getState().list;
+  const shoppingCart = Object.values(store.getState().shoppingCart);
+
+  function onOpen() {
+    setModal(prev => !prev);
+  }
 
   const callbacks = {
-    onDeleteItem: useCallback((code) => {
-      store.deleteItem(code);
+    onAddBasket: useCallback((code) => {
+      store.addBasket(code);
     }, [store]),
 
-    onSelectItem: useCallback((code) => {
-      store.selectItem(code);
+    onDeleteProduct: useCallback((code) => {
+      store.deleteProduct(code);
     }, [store]),
-
-    onAddItem: useCallback(() => {
-      store.addItem();
-    }, [store])
   }
 
   return (
     <PageLayout>
-      <Head title='Приложение на чистом JS'/>
-      <Controls onAdd={callbacks.onAddItem}/>
-      <List list={list}
-            onDeleteItem={callbacks.onDeleteItem}
-            onSelectItem={callbacks.onSelectItem}/>
+      <Head
+        title='Магазин'
+        buttonName={null}
+      />
+
+      <Controls
+        buttonName='Перейти'
+        handleClick={onOpen}
+        sumGoods={sumGoodsFunc(shoppingCart)}
+        countGoods={countGoodsFunc(shoppingCart)}
+      />
+
+      <List
+        list={list}
+        handleClick={callbacks.onAddBasket}
+        buttonName='Добавить'
+      />
+
+      {modal &&
+        <Modal>
+          <Head
+            title='Корзина'
+            buttonName='Закрыть'
+            handleClick={onOpen}
+          />
+
+          <List
+            list={shoppingCart}
+            buttonName='Удалить'
+            handleClick={callbacks.onDeleteProduct}
+            sumGoods={sumGoodsFunc(shoppingCart)}
+          />
+        </Modal>
+      }
+
     </PageLayout>
   );
 }

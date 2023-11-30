@@ -1,12 +1,6 @@
 .Item {
   display: flex;
   justify-content: flex-start;
-  transition: background-color 1s;
-}
-
-.Item_selected {
-  background: #75aaf1;
-  color: #fff;
 }
 
 .Item-code {
@@ -18,8 +12,21 @@
   padding: 20px 10px;
 }
 
-.Item-actions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 20px 20px 10px;
+.Item .Item-price {
+  padding: 20px 10px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: right;
+}
+
+.Item .Item-price-margin {
+  padding: 20px 30px;
+}
+
+.Item .Item-count {
+  padding: 20px 10px;
+  min-width: 50px;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: right;
 }

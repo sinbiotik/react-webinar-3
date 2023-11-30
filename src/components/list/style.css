@@ -1,7 +1,25 @@
-.List {
-
+.List-margin {
+  margin-top: 63px;
+  border-top: 1px dashed #ccc;
 }
 
 .List-item {
   border-bottom: 1px dashed #ccc;
+}
+
+.List-total {
+  margin-right: 106px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.List .List-total-title {
+  padding: 20px 35px;
+  text-align: right;
+}
+
+.List .List-total-text {
+  padding: 20px 10px;
+  text-align: right;
 }

@@ -13,14 +13,30 @@
 }
 
 .Item .Item-price {
-  padding: 20px 10px;
+  padding: 20px 10px 20px 0px;
   font-size: 18px;
   line-height: 21px;
   text-align: right;
 }
 
-.Item .Item-price-margin {
-  padding: 20px 30px;
+.Item .Item-price-margin-xs {
+  padding: 20px 30px 20px 0px;
+}
+
+.Item .Item-price-margin-s {
+  padding: 20px 45px 20px 0px;
+}
+
+.Item .Item-price-margin-m {
+  padding: 20px 55px 20px 0px;
+}
+
+.Item .Item-price-margin-l {
+  padding: 20px 65px 20px 0px;
+}
+
+.Item .Item-price-margin-xl {
+  padding: 20px 85px 20px 0px;
 }
 
 .Item .Item-count {

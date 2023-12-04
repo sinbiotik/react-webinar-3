@@ -60,9 +60,5 @@ export function sumGoodsFunc(arr) {
 }
 
 export function countGoodsFunc(arr) {
-  let countGoods = 0
-  arr.forEach(function(item){
-    countGoods += item.count
-  })
-  return (countGoods);
+  return arr.length;
 }

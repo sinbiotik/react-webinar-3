@@ -13,6 +13,23 @@ function Item(props) {
   }
   const cn = bem('Item');
 
+  let priceMargin = ''
+  if(props.sumGoods) {
+    if(props.sumGoods >= 1000000) {
+      priceMargin = 'Item-price-margin-xl'
+    } else if (props.sumGoods >= 100000) {
+      priceMargin = 'Item-price-margin-l'
+    } else if (props.sumGoods >= 10000) {
+      priceMargin = 'Item-price-margin-m'
+    } else if (props.sumGoods >= 1000 ) {
+      priceMargin = 'Item-price-margin-s'
+    } else if (props.sumGoods >= 100 ) {
+      priceMargin = 'Item-price-margin-xs'
+    }
+  } else {
+    priceMargin = ''
+  }
+
   return (
     <div
       className={ cn() }
@@ -23,7 +40,7 @@ function Item(props) {
       </div>
       <div
         className={
-          `${cn('price text price')} ${props.sumGoods ? 'Item-price-margin' : ''}`
+          `${cn('price text price')} ${priceMargin}`
         }
       >
         {new Intl.NumberFormat('ru-RU').format(props.item.price)}

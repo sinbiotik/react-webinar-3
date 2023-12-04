@@ -4,7 +4,6 @@ import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
 import Modal from './components/modal';
-import { countGoodsFunc, sumGoodsFunc } from './utils';
 
 /**
  * Приложение
@@ -13,10 +12,8 @@ import { countGoodsFunc, sumGoodsFunc } from './utils';
  */
 function App({store}) {
 
-  const [modal, setModal] = useState(false)
-
-  const list = store.getState().list;
-  const shoppingCart = Object.values(store.getState().shoppingCart);
+  const [modal, setModal] = useState(false);
+  const {list, shoppingCart, total, count} = store.getState();
 
   function onOpen() {
     setModal(prev => !prev);
@@ -42,8 +39,8 @@ function App({store}) {
       <Controls
         buttonName='Перейти'
         handleClick={onOpen}
-        sumGoods={sumGoodsFunc(shoppingCart)}
-        countGoods={countGoodsFunc(shoppingCart)}
+        sumGoods={total}
+        countGoods={count}
       />
 
       <List
@@ -64,7 +61,8 @@ function App({store}) {
             list={shoppingCart}
             buttonName='Удалить'
             handleClick={callbacks.onDeleteProduct}
-            sumGoods={sumGoodsFunc(shoppingCart)}
+            sumGoods={total}
+            countGoods={count}
           />
         </Modal>
       }

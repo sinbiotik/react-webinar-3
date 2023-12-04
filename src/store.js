@@ -1,4 +1,4 @@
-import {generateCode} from "./utils";
+import {countGoodsFunc, sumGoodsFunc} from "./utils";
 
 /**
  * Хранилище состояния приложения
@@ -45,28 +45,27 @@ class Store {
    * @param code
    */
   addBasket(code) {
-    if (this.state.shoppingCart[code]) {
-      this.setState({
-        ...this.state,
-        shoppingCart: {
-          ...this.state.shoppingCart,
-          [code]: {
-            ...this.state.shoppingCart[code],
-            count: this.state.shoppingCart[code].count + 1
-          }
-        }
-      })
+    const index = this.state.shoppingCart.findIndex(item => item.code === code)
+    const shoppingCart = [...this.state.shoppingCart]
+    if (index >= 0) {
+      shoppingCart[index] = {
+        ...this.state.shoppingCart[index],
+        count: this.state.shoppingCart[index].count + 1
+      }
+
     } else {
-      this.setState({
-        ...this.state,
-        shoppingCart: {...this.state.shoppingCart,
-          [code]: {
-            ...this.state.list.find(item => item.code === code),
-            count: 1
-          }
-        }
+      shoppingCart.push({
+        ...this.state.list.find(item => item.code === code),
+        count: 1
       })
     }
+
+    this.setState({
+      ...this.state,
+      shoppingCart,
+      count: countGoodsFunc(shoppingCart),
+      total: sumGoodsFunc(shoppingCart)
+    })
   };
 
   /**
@@ -74,11 +73,15 @@ class Store {
    * @param code
    */
   deleteProduct(code) {
-    let newObj =  {...this.state.shoppingCart}
-    delete newObj[code]
+    const shoppingCart = [...this.state.shoppingCart]
+    const index = this.state.shoppingCart.findIndex(item => item.code === code)
+    shoppingCart.splice(index, 1)
+
     this.setState({
       ...this.state,
-      shoppingCart: newObj
+      shoppingCart,
+      count: countGoodsFunc(shoppingCart),
+      total: sumGoodsFunc(shoppingCart)
     })
   }
 }

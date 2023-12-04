@@ -4,7 +4,7 @@ import Item from "../item";
 import './style.css';
 import {cn as bem} from '@bem-react/classname'
 
-function List({ list, handleClick, buttonName, sumGoods, }) {
+function List({ list, handleClick, buttonName, sumGoods, countGoods }) {
 
   const cn = bem('List');
 
@@ -22,7 +22,7 @@ function List({ list, handleClick, buttonName, sumGoods, }) {
           </div>
         )
       }
-      {Boolean(sumGoods) &&
+      {Boolean(countGoods) &&
         <div className={cn('total')}>
           <div className={cn('total-title text bold')}>Итого</div>
           <div className={cn('total-text text bold price')}>
@@ -41,6 +41,7 @@ List.propTypes = {
   handleClick: PropTypes.func,
   buttonName: PropTypes.node,
   sumGoods: PropTypes.node,
+  countGoods: PropTypes.node,
 };
 
 List.defaultProps = {

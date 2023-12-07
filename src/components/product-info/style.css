@@ -1,0 +1,25 @@
+.ProductInfo {
+  padding: 15px 35px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.ProductInfo div {
+  margin-bottom: 20px;
+}
+
+.ProductInfo-price {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.ProductInfo-button {
+  margin-right: auto;
+}

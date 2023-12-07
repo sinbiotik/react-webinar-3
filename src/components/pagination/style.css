@@ -1,0 +1,30 @@
+.Pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.Pagination-page {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Pagination-page:hover {
+  background-color: rgba(225, 225, 225, 1);
+}
+
+.current-page {
+  color: rgba(255, 255, 255, 1);  ;
+  background-color: rgba(0, 135, 233, 1);
+  pointer-events: none;
+}
+
+
+.disable-click {
+  pointer-events: none;
+  color: rgba(204, 204, 204, 1);
+}

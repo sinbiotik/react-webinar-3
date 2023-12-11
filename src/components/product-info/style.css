@@ -20,6 +20,10 @@
   line-height: 28px;
 }
 
+.ProductInfo-price-num {
+  margin-left: 15px;
+}
+
 .ProductInfo-button {
   margin-right: auto;
 }

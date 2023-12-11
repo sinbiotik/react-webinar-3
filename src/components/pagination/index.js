@@ -8,21 +8,43 @@ function Pagination(props) {
 
   function createPaginationPages(arr, totalCount, currentPage) {
     if (totalCount > 3) {
-      if (currentPage > 2) {
+      if(currentPage === 1) {
+        for(let i = 1; i <= 3; i++) {
+          arr.push(i)
+          if(i === totalCount) break
+        }
+      }
+      else if(currentPage === 2) {
+        for(let i = currentPage; i <= currentPage + 1; i++) {
+          arr.push(i)
+          if(i === totalCount) break
+        }
+        arr.unshift(1)
+      } else if (currentPage === 3) {
+        for( let i = 1; i <=4; i++) {
+          arr.push(i)
+          if(i === totalCount) break
+        }
+      } else if (currentPage > 3 & currentPage !== totalCount) {
         for(let i = currentPage - 1; i <= currentPage + 1; i++) {
           arr.push(i)
           if(i === totalCount) break
         }
         arr.unshift(1, null)
-      } else {
-        for( let i = 1; i <=3; i++) {
+      } 
+       else{
+        for(let i = currentPage - 2; i <= totalCount; i++) {
           arr.push(i)
           if(i === totalCount) break
         }
-      }
+        arr.unshift(1, null)
+      }      
 
-      if(currentPage < totalCount - 1) {
+      if(currentPage < totalCount - 2) {
         arr.push(null, totalCount)
+      }
+      if(currentPage === totalCount - 2) {
+        arr.push(totalCount)
       }
 
     } else {

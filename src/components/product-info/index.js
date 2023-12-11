@@ -2,6 +2,7 @@ import {memo} from "react";
 import PropTypes from "prop-types";
 import './style.css';
 import {cn as bem} from '@bem-react/classname';
+import { numberFormat } from "../../utils";
 
 function ProductInfo(props) {
   const cn = bem('ProductInfo');
@@ -28,7 +29,10 @@ function ProductInfo(props) {
       </div>
 
       <div className={cn('price')}>
-        Цена: {props.product.price} ₽
+        Цена: 
+        <span className={cn('price-num')}>
+          {numberFormat(props.product.price, {minimumFractionDigits: 2})} ₽
+        </span> 
       </div>
 
       <button

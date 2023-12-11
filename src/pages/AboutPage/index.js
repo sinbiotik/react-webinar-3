@@ -15,12 +15,12 @@ function AboutPage() {
   useEffect(() => {
     if (!id) return
     store.actions.product.load(id);
-  }, []);
+  }, [id]);
 
   const select = useSelector(state => ({
     amount: state.basket.amount,
     sum: state.basket.sum,
-    product: state.product.product
+    product: state.product
   }));
 
   const callbacks = {

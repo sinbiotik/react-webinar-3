@@ -31,10 +31,7 @@ class Catalog extends StoreModule {
 
   async load() {
     const limit = this.getState().limit
-    let skip
-    if(this.getState().currentPage > 1) {
-      skip = this.getState().currentPage * 10 - 9
-    } else skip = 0
+    const skip = (this.getState().currentPage - 1) * 10     
 
     const response = await fetch(`/api/v1/articles?limit=${limit}&skip=${skip}&fields=items(_id, title, price),count`);
     const json = await response.json();

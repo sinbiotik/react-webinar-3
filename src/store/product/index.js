@@ -3,9 +3,7 @@ import StoreModule from "../module";
 class Product extends StoreModule {
 
   initState() {
-    return {
-      product: {}
-    }
+    return {}
   }
 
   async load(id) {
@@ -16,10 +14,7 @@ class Product extends StoreModule {
 
     const json = await response.json();
 
-    this.setState({
-      ...this.getState(),
-      product: json.result
-    }, 'Загружен товар из АПИ');
+    this.setState(json.result, 'Загружен отдельный товар из АПИ');
   }
 }
 
